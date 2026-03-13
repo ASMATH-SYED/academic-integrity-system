@@ -5,7 +5,7 @@ pandas
 torch
 transformers
 sentence-transformers
-serpapi
+google-search-results
 reportlab
 PyPDF2
 requests
