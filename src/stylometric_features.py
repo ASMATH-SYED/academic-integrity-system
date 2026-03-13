@@ -1,5 +1,10 @@
+
 import re
 import numpy as np
+import nltk
+
+nltk.download('stopwords')
+
 from nltk.corpus import stopwords
 
 stop_words = set(stopwords.words("english"))
@@ -15,8 +20,6 @@ def extract_stylometric_features(text):
     avg_sentence_length = np.mean([len(s.split()) for s in sentences]) if sentences else 0
     vocab_richness = len(set(words)) / len(words) if words else 0
     stopword_ratio = sum(1 for w in words if w in stop_words) / len(words) if words else 0
-
-    # 🔬 Advanced Research Metrics
 
     # Sentence Length Variance (Burstiness indicator)
     sentence_lengths = [len(s.split()) for s in sentences]
