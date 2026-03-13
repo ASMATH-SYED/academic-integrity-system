@@ -1,3 +1,4 @@
+
 import torch
 import math
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -8,15 +9,9 @@ MODEL_NAME = "distilgpt2"
 # Cache model so it loads only once
 @st.cache_resource
 def load_perplexity_model():
-    tokenizer = AutoTokenizer.from_pretrained(
-        MODEL_NAME,
-        local_files_only=True  # 🔥 Force offline usage
-    )
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
-    model = AutoModelForCausalLM.from_pretrained(
-        MODEL_NAME,
-        local_files_only=True  # 🔥 Force offline usage
-    )
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
 
     model.eval()
     return tokenizer, model
